@@ -2,11 +2,13 @@ use hyper::service::{make_service_fn, service_fn};
 use hyper::{body::Bytes, Body, Request, Response, Server};
 use std::convert::Infallible;
 use std::net::SocketAddr;
+use std::fs;
 
 async fn handle(_req: Request<Body>) -> Result<Response<Body>, Infallible> {
-    Ok(Response::new(Body::from(Bytes::from_static(
-        include_bytes!("index.html"),
-    ))))
+    // Read index.html from the filesystem
+    let contents = fs::read_to_string("/app/index.html")
+        .unwrap_or_else(|_| String::from("Error: index.html not found"));
+    Ok(Response::new(Body::from(contents)))
 }
 
 #[tokio::main]
