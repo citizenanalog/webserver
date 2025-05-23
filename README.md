@@ -1,3 +1,3 @@
-# Hello World
+# Webserver
 
-A bare-bones Rust service that serves a static website that says Hello World.
+A bare-bones Rust service that serves a dynamically generated html file.
