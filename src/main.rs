@@ -1,5 +1,5 @@
 use hyper::service::{make_service_fn, service_fn};
-use hyper::{body::Bytes, Body, Request, Response, Server};
+use hyper::{body::Body, Request, Response, Server};
 use std::convert::Infallible;
 use std::net::SocketAddr;
 use std::fs;
